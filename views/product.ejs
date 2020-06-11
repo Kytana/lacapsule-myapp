@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    
+    <a href="/product?type=pull&color=rouge">Pull rouge</a>
+    <a href="/product?type=casquette&color=bleue">Casquette bleue</a>
+
+    <hr>
+
+    <h2>Form GET</h2>
+
+    <p id="text-1">Sélectionner un article</p>
+
+    <form action="/product" method="get" id="form-get" name="form-get">
+      <select name="type" placeholder="Type">
+        <option value="casquette">Casquette</option>
+        <option value="pull">Pull</option>
+        <option value="jeans">Jeans</option>
+      </select>
+      <select name="color" placeholder="Couleur">
+        <option value="rouge">Rouge</option>
+        <option value="blanc">Blanc</option>
+        <option value="bleu">Bleu</option>
+      </select>
+      <input type="submit" name="validate">
+    </form>
+
+    <p id="text-1-bis">Vous avez commandé un(e) <%= type %> de couleur <%= color %></p>
+
+    <hr>
+
+    <h2>Form POST</h2>
+
+    <p id="text-2">Commander un article</p>
+
+    <form action="/product" method="post" id="form-post" name="form-post">
+      <input type="text" name="type" placeholder="Type">
+      <input type="text" name="color" placeholder="Couleur">
+      <input type="submit" name="validate">
+    </form>
+
+    
+
+
+    <!--<script src="javascripts/script.js"></script>-->
+
+  </body>
+</html>

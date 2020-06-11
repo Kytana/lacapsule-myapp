@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="stylesheets/style-form.css"> 
+  </head>
+  <body>
+
+    <h1><%= title %></h1>
+
+      <form action="/form" method="post" id="subscribe-form">
+        
+      <input type="text" name="name" value="" placeholder="Nom" required>
+      <% if(typeof userValue != "undefined" ){
+          if(userValue.name.length < 2) { %>
+            <span class="error-msg">Votre nom doit contenir 2 caractères minimum</span>
+          <% } 
+      } %>
+
+      <input type="text" name="firstname" value="" placeholder="Prénom" required>
+      <% if(typeof userValue != "undefined" ){
+          if(userValue.firstname.length < 2) { %>
+            <span class="error-msg">Votre prénom doit contenir 2 caractères minimum</span>
+          <% } 
+      } %>
+
+      <input type="email" name="email" value="" placeholder="E-mail" required>
+      <% if(typeof userValue != "undefined" ){
+          if((userValue.email.length < 2)||(userValue.email.includes("@") == false)||(userValue.email.includes(".") == false)) { %>
+            <span class="error-msg">Votre e-mail doit contenir 2 caractères minimum, un signe @ et un signe .</span>
+          <% } 
+      } %>
+      
+      <input type="text" name="phone" value="" placeholder="Téléphone" required>
+      <% if(typeof userValue != "undefined" ){
+          if(userValue.phone.length != 10) { %>
+            <span class="error-msg">Votre téléphone doit contenir 10 chiffres</span>
+          <% } 
+      } %>
+
+      <input type="password" name="password1" value="" placeholder="Mot de passe" autocomplete="on" required>
+      <% if(typeof userValue != "undefined" ){
+          if(userValue.password1.length < 8 ) { %>
+            <span class="error-msg">Votre mot de passe doit contenir 8 caractères minimum</span>
+          <% } 
+      } %>
+
+    
+      <input type="password" name="password2" value="" placeholder="Confirmation de mot de passe" autocomplete="on" required>
+      <% if(typeof userValue != "undefined" ){
+          if(userValue.password2 != userValue.password1 ) { %>
+            <span class="error-msg">Vos deux mots de passe ne correspondent pas</span>
+          <% } 
+      } %>      
+
+      <Button>Create</Button>
+      
+
+    </form>
+    
+    <% if(typeof userValue != "undefined" ){
+      var firstNameCaps = (userValue.firstname).charAt(0).toUpperCase() + (userValue.firstname).slice(1); 
+      var lastNameCaps = (userValue.name).charAt(0).toUpperCase() + (userValue.name).slice(1); 
+      var phoneFormat = (userValue.phone).substr(0,2)+" "+(userValue.phone).substr(2,3)+" "+(userValue.phone).substr(5,3)+" "+(userValue.phone).substr(8,3);
+    %>
+      <p class="valid-msg">Félicitation <%= firstNameCaps %> <%= lastNameCaps %> ! Nous te recontacterons au : <%= phoneFormat %></p>
+    <% } %>   
+    
+
+  </body>
+</html>

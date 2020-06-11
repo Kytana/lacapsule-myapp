@@ -1,0 +1,27 @@
+body{
+    margin:20px;
+    font-family:Arial, sans-serif;
+}
+#subscribe-form {
+    display:flex;
+    flex-direction:column;
+    width:50%;
+}
+
+#subscribe-form input, #subscribe-form button {
+    margin:10px 0px;
+    padding:10px;
+}
+.error-msg{
+    color:#F00;
+    font-size:11px;
+    margin-bottom:5px;
+}
+
+.valid-msg{
+    font-size:18px;
+    font-weight:bold;
+    padding:20px;
+    background:#D1F5FF;
+    color:#3C91E6;
+}

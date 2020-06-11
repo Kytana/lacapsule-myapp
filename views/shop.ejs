@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="stylesheets/style-shop.css"> 
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet"> 
+    </head>
+    <body>
+
+        <section id="sushi-header">
+            <div class="sushi-header__header"><%= title %></div>
+        </section>
+        
+        <div class="container">
+            <section id="sushi-menu">
+
+                <h2>Ma commande</h2>
+
+                <ul id="gallery">
+                    <% 
+                        for(var i=0; i<products.length; i++) {
+
+                        %>
+                    <li class="card">
+                        <a href="" class="image"><img src="<%= products[i].image %>" ></a>
+                        <div class="pdt-info">
+                            <h3><%= products[i].name %></h3>
+                            <div class="pdt-price">Prix : <%= products[i].price %> €</dsv>
+                            <div class="pdt-quantity">Qté : <%= products[i].quantity %></div>
+                            <div class="pdt-quantity">Qté :
+                                <input type="number" id="quantity" name="quantity" min="1" max="9">
+                            </div>
+                        </div>
+                        <div class="pdt-total"><%= products[i].quantity*products[i].price %> €</div>
+                    </li>
+                    <%
+                    }
+                    if(products.length == 0) {
+                    %>
+                        <h2>Aucun article disponible</h2>
+                    <%
+                    }
+                    %>
+                </ul>
+            </section>
+
+            <aside id="cart-summary">
+
+                <h2>Total panier</h2>
+                
+                <% 
+                var productTotal = 0;
+                var cartTotal = 0
+                for(var i=0; i<products.length; i++) {
+                    productTotal = products[i].quantity*products[i].price;
+                    cartTotal += productTotal;
+                    cartTotal;
+                } 
+                %>
+
+                <div class="cart-total">Total : <%= cartTotal %> €</div>
+
+            </aside>
+
+        </div>
+          
+        <script src="javascripts/script.js"></script>
+    </body>
+</html>
